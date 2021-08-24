@@ -34,7 +34,7 @@
 - 각자 다른 1명의 코드를 30분동안 스터디 당일에 코드리뷰 (30분보다 줄일지 늘릴지 1회차이후 조정)
 - 시작 전에 근황이나 문제 어려웠던 점, 코드리뷰 후에 알게된 것 토론
 - 언어 : 자바스크립트
-- 문제 : 프로그래머스 위클리 챌리지
+- 문제 : [프로그래머스 위클리 챌린지](https://programmers.co.kr/learn/challenges?tab=weekly_challenges)
 - 문제수 : 주 1개 (3회차까지 인원의 80%가 완료하면 개수 늘리기)
 
 ## ✏️ 제출방식
@@ -56,7 +56,7 @@ fe private 과제 제출 방식과 동일
 
 ## 📌 진행방식
 
-- [프로그래머스 월간 코드챌린지](https://programmers.co.kr/competitions/1581?slug=monthly-code-challenge-s3) 시즌3에 참여
+- [프로그래머스 월간 코드 챌린지 시즌3](https://programmers.co.kr/competitions/1581?slug=monthly-code-challenge-s3) 에 참여
 - 끝나고 30분동안 풀이법 토론 및 회고
 
 ## 📆 월간 코드챌린지 기간
