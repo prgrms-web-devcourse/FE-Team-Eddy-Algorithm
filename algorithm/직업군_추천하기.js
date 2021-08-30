@@ -11,7 +11,7 @@ function solution(table, languages, preference) {
   });
 
   // get MaxValue and Jobs
-  let maxValue = { jobs: [], maxScore: 0 };
+  let maxScoreAndJobs = { jobs: [], maxScore: 0 };
 
   Object.entries(jobsScoreofLanguage).forEach(([job]) => {
     const totalValue = languages.reduce(
@@ -19,10 +19,10 @@ function solution(table, languages, preference) {
         acc + (jobsScoreofLanguage[job].get(language) || 0) * preference[idx],
       0
     );
-    if (maxValue.maxScore < totalValue) {
-      maxValue = { jobs: [job], maxScore: totalValue };
-    } else if (maxValue.maxScore === totalValue) {
-      maxValue.jobs.push(job);
+    if (maxScoreAndJobs.maxScore < totalValue) {
+      maxScoreAndJobs = { jobs: [job], maxScore: totalValue };
+    } else if (maxScoreAndJobs.maxScore === totalValue) {
+      maxScoreAndJobs.jobs.push(job);
     }
   });
 
