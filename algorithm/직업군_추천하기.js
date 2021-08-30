@@ -1,22 +1,22 @@
 function solution(table, languages, preference) {
-  const jobs = {}; // {"job":Map(language:score) ... }
-  // making jobs Object
-  table.sort(); // 사전 순으로 정렬
+  // {"job":Map(language:score) ... }
+  const jobsScoreofLanguage = {};
+  table.sort();
   table.forEach((jobString) => {
     const [job, ...languages] = jobString.split(" ");
-    jobs[job] = new Map();
+    jobsScoreofLanguage[job] = new Map();
     languages.forEach((language, idx) => {
-      jobs[job].set(language, 5 - idx);
+      jobsScoreofLanguage[job].set(language, 5 - idx);
     });
   });
 
   // get MaxValue and Jobs
   let maxValue = { jobs: [], maxScore: 0 };
 
-  Object.entries(jobs).forEach(([job]) => {
+  Object.entries(jobsScoreofLanguage).forEach(([job]) => {
     const totalValue = languages.reduce(
       (acc, language, idx) =>
-        acc + (jobs[job].get(language) || 0) * preference[idx],
+        acc + (jobsScoreofLanguage[job].get(language) || 0) * preference[idx],
       0
     );
     if (maxValue.maxScore < totalValue) {
@@ -25,6 +25,7 @@ function solution(table, languages, preference) {
       maxValue.jobs.push(job);
     }
   });
+
   const [selectedJob] = maxValue.jobs;
   return selectedJob;
 }
@@ -39,4 +40,4 @@ const table = [
 const languages = ["PYTHON", "C++", "SQL"];
 const preference = [7, 5, 5];
 
-console.log(solution(table, languages, preference));
+console.log(solution(table, languages, preference)); // "HARDWARE"
