@@ -1,6 +1,7 @@
 function solution(table, languages, preference) {
   // {"job":Map(language:score) ... }
   const jobsScoreofLanguage = {};
+  console.log(jobsScoreofLanguage["haha"]);
   table.sort();
   table.forEach((jobString) => {
     const [job, ...languages] = jobString.split(" ");
@@ -9,14 +10,14 @@ function solution(table, languages, preference) {
       jobsScoreofLanguage[job].set(language, 5 - idx);
     });
   });
-
+  console.log(jobsScoreofLanguage);
   // get maxScore and Jobs
   let maxScoreAndJobs = { jobs: [], maxScore: 0 };
 
   Object.entries(jobsScoreofLanguage).forEach(([job]) => {
     const totalScore = languages.reduce(
       (acc, language, idx) =>
-        acc + (jobsScoreofLanguage[job].get(language) || 0) * preference[idx],
+        acc + (jobsScoreofLanguage[job].get(language) ?? 0) * preference[idx],
       0
     );
     if (maxScoreAndJobs.maxScore < totalScore) {
