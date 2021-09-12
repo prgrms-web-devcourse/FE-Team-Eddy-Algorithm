@@ -7,7 +7,7 @@ const solution = (wordsStr) => {
     
     const words = wordsStr.split('');
     
-    orderRules.forEach((rule, index) => {
+    orderRules.forEach((_, index) => {
         orderRules[index] = accumulator * maxWordLength + blankCase;
         accumulator = orderRules[index];
     })
