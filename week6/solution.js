@@ -3,16 +3,17 @@ const reducer = (accumulator, currentValue) => parseInt(accumulator, 10) + parse
 const getBiggerCase = (weights, records) => {
     const biggerCase = [];
     const recordsLength = records.length;
+    
     for (let i = 0; i < recordsLength; i++) {
-        biggerCase.push(0);
+        biggerCase.push(0)
     }
     
-    records.forEach((record, index) => {  
-        record.forEach((element, index2) => {
+    records.forEach((record, recordIndex) => {
+        record.forEach((element, elementIndex) => {
             if (element === '1'){
-                const bigger = weights[index] < weights[index2];
+                const bigger = weights[recordIndex] < weights[elementIndex];
                 const biggerCount = bigger ? 1 : 0;
-                biggerCase[index] += biggerCount;
+                biggerCase[recordIndex] += biggerCount
             }
         });
     });
@@ -20,32 +21,38 @@ const getBiggerCase = (weights, records) => {
     return biggerCase;
 }
 
-const calculateWinRate = (records) => {
+const calculateWinRate = (weights, records, totalRounds) => {
     const rate = [];
     const recordsLength = records.length;
+    
     for (let i = 0; i < recordsLength; i++) {
         rate.push(0)
     }
-    records.forEach((record, index) => 
-        rate[index] = (record.reduce(reducer) / (recordsLength - 1)) * 100
-    );
+    
+    records.forEach((record, index) => {
+        const totalRound = totalRounds[index] ? (totalRounds[index]) : 1
+        rate[index] = (record.reduce(reducer) / totalRound) * 100
+    });
         
     return rate;
 }
 
 const solution = (weights, head2head) => {
     const records = [];
-    const str = [];
-
+    const totalRounds = [];
+    
     head2head.forEach((record) => {
+        const totalRound = record.length - record.match(/N/g).length;
+        totalRounds.push(totalRound)
+        
         const replaceN = record.replace(/N/g, '0');
         const replaceL = replaceN.replace(/L/g, '0');
         const replaceW = replaceL.replace(/W/g, '1');
-        str.push(replaceW);
+
         records.push([...replaceW]);
     })
 
-    const rate = calculateWinRate(records);
+    const rate = calculateWinRate(weights, records, totalRounds);
 
     const biggerCase = getBiggerCase(weights, records);
 
@@ -55,17 +62,13 @@ const solution = (weights, head2head) => {
         biggerCase: biggerCase[index],
         winRate: rate[index],
     }));
-
+    
     cases.sort((currentCase, targetCase) => {
         if (currentCase.winRate != targetCase.winRate) {
             return targetCase.winRate - currentCase.winRate;
-        }
-
-        if (currentCase.biggerCase != targetCase.biggerCase) {
+        } else if (currentCase.biggerCase != targetCase.biggerCase) {
             return targetCase.biggerCase - currentCase.biggerCase;
-        }
-
-        if (currentCase.weight != targetCase.weight) {
+        } else if (currentCase.weight != targetCase.weight) {
             return targetCase.weight - currentCase.weight;
         }
     })
