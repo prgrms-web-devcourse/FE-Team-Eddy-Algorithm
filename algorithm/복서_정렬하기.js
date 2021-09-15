@@ -23,12 +23,14 @@ function solution(weights, head2head) {
     );
     boxersWinRate[playerIdx] = totalMatch !== 0 ? winMatch / totalMatch : 0;
   });
-  result.sort(
-    (player1, player2) =>
+  result.sort((player1, player2) => {
+    return (
       boxersWinRate[player2 - 1] - boxersWinRate[player1 - 1] ||
       beatHeavyBoxerCount[player2 - 1] - beatHeavyBoxerCount[player1 - 1] ||
       weights[player2 - 1] - weights[player1 - 1] ||
       player1 - player2
-  );
+    );
+  });
+
   return result;
 }
