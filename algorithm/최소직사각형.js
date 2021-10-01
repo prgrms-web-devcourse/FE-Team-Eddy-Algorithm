@@ -9,11 +9,11 @@ function solution(sizes) {
       return acc
     }, 0)
 }
-const sizes = [
-  [10, 7],
-  [12, 3],
-  [8, 15],
-  [14, 7],
-  [5, 15],
-]
-console.log(solution(sizes))
+// const sizes = [
+//   [10, 7],
+//   [12, 3],
+//   [8, 15],
+//   [14, 7],
+//   [5, 15],
+// ]
+// console.log(solution(sizes))
