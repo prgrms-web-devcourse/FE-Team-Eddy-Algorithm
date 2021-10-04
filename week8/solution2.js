@@ -17,8 +17,9 @@ function solution(lottos, winNums) {
 
     const ectCaseRank = 6;
     const maxCase = correct + unvisibleNumsLength;
-    const maxRank = maxCase <= 1 ? ectCaseRank : winNums.length - maxCase + 1;
-    const minRank = correct <= 1 ? ectCaseRank : winNums.length - correct + 1;
+    const winNumsLength = winNums.length;
+    const maxRank = maxCase <= 1 ? ectCaseRank : winNumsLength - maxCase + 1;
+    const minRank = correct <= 1 ? ectCaseRank : winNumsLength - correct + 1;
 
     return [maxRank, minRank];
 }
