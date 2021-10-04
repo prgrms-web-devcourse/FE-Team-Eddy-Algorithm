@@ -1,5 +1,5 @@
-function solution(lottos, winNumsOrigin) {
-    const winNumsAscending = winNumsOrigin.sort((a, b) => (a - b));
+function solution(lottos, winNums) {
+    const winNumsAscending = winNums.sort((a, b) => (a - b));
     const visibleNums = lottos.filter((num) => num !== 0);
     const unvisibleNumsLength = lottos.length - visibleNums.length;
     const visibleNumsAscending = visibleNums.sort((a, b) => (a - b));
@@ -17,8 +17,8 @@ function solution(lottos, winNumsOrigin) {
 
     const ectCaseRank = 6;
     const maxCase = correct + unvisibleNumsLength;
-    const maxRank = maxCase <= 1 ? ectCaseRank : winNumsOrigin.length - maxCase + 1;
-    const minRank = correct <= 1 ? ectCaseRank : winNumsOrigin.length - correct + 1;
-    
+    const maxRank = maxCase <= 1 ? ectCaseRank : winNums.length - maxCase + 1;
+    const minRank = correct <= 1 ? ectCaseRank : winNums.length - correct + 1;
+
     return [maxRank, minRank];
 }
