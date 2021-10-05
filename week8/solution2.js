@@ -1,6 +1,7 @@
 function solution(lottos, winNums) {
     const winNumsDescending = winNums.sort((a, b) => (b - a));
-    const visibleNums = lottos.filter((num) => num !== 0);
+    const unvisibleNum = 0;
+    const visibleNums = lottos.filter((num) => num !== unvisibleNum);
     const unvisibleNumsLength = lottos.length - visibleNums.length;
     const visibleNumsDescending = visibleNums.sort((a, b) => (b - a));
     let correct = 0;
