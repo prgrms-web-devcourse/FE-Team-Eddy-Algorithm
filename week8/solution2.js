@@ -1,19 +1,22 @@
 function solution(lottos, winNums) {
-    const winNumsAscending = winNums.sort((a, b) => (a - b));
+    const winNumsDescending = winNums.sort((a, b) => (b - a));
     const visibleNums = lottos.filter((num) => num !== 0);
     const unvisibleNumsLength = lottos.length - visibleNums.length;
-    const visibleNumsAscending = visibleNums.sort((a, b) => (a - b));
+    const visibleNumsDescending = visibleNums.sort((a, b) => (b - a));
     let correct = 0;
     const winNumsLength = winNums.length;
+    const visibleNumsLength = visibleNums.length;
 
-    for (const visibleNum of visibleNumsAscending) {
-        for (const winNum of winNumsAscending) {
+    for (let i = visibleNumsLength - 1; i >= 0; i--) {
+        for (let j = winNumsLength - 1; j >= 0; j--) {
+            const visibleNum = visibleNumsDescending[i];
+            const winNum = winNumsDescending[j];
             if (visibleNum === winNum) {
                 correct += 1;
-                winNumsAscending.shift();
+                visibleNumsDescending.pop();
                 break;
             } else if (visibleNum < winNum) {
-                winNumsAscending.shift();
+                visibleNumsDescending.pop();
                 break;
             }
         }
