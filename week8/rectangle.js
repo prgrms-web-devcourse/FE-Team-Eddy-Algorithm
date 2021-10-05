@@ -1,13 +1,14 @@
 function solution(sizes) {
   let shorterMax = 0;
   let longerMax = 0;
-  sizes.forEach((card) => {
+  sizes.forEach(card => {
     card.sort((a, b) => a - b);
-    if (card[0] > shorterMax) {
-      shorterMax = card[0];
+    const [shorter, longer] = card;
+    if (shorter > shorterMax) {
+      shorterMax = shorter;
     }
-    if (card[1] > longerMax) {
-      longerMax = card[1];
+    if (longer > longerMax) {
+      longerMax = longer;
     }
   });
   return shorterMax * longerMax;
