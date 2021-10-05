@@ -7,7 +7,7 @@ function solution(lottos, win_nums) {
   // 0이 아닌 숫자 중 로또와 일치하는 숫자 개수
   const matchNum = nonZeroLottos.reduce((acc, cur) => {
     win_nums.forEach((num) => {
-      if (num === cur) acc++;
+        num === cur && acc++
     });
     return acc;
   }, 0);
