@@ -9,16 +9,18 @@ function solution(lottos, winNums) {
     const visibleNumsLength = visibleNums.length;
 
     for (let i = visibleNumsLength - 1; i >= 0; i--) {
-        for (let j = winNumsLength - 1; j >= 0; j--) {
+        for (let j = winNums.length - 1; j >= 0; j--) {
             const visibleNum = visibleNumsDescending[i];
             const winNum = winNumsDescending[j];
+            
             if (visibleNum === winNum) {
                 correct += 1;
-                visibleNumsDescending.pop();
+                winNumsDescending.pop();
                 break;
             } else if (visibleNum < winNum) {
-                visibleNumsDescending.pop();
                 break;
+            } else {
+                winNumsDescending.pop();
             }
         }
     }
