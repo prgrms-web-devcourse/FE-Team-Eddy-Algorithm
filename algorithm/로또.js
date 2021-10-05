@@ -14,8 +14,8 @@ function solution(lottos, win_nums) {
     countCorrect = 0
 
   lottos.forEach((lotto) => {
-    countCorrect += win_nums.includes(lotto) ? 1 : 0
-    countZero += lotto === 0 ? 1 : 0
+    win_nums.includes(lotto) && countCorrect++
+    lotto === 0 && countZero++
   })
 
   return [rank[countCorrect + countZero], rank[countCorrect]]
