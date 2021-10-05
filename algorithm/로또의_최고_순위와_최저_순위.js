@@ -3,7 +3,8 @@ function solution(lottos, win_nums) {
     
   win_nums = win_nums.reduce((acc,num) => (acc[num] = true , acc), {});
     
-  let [maxWinCount,minWinCount] = lottos.reduce(([maxWinCount,minWinCount], lottoNum) => {
+  return lottos
+    .reduce(([maxWinCount,minWinCount], lottoNum) => {
       if (lottoNum === 0) {
         return [maxWinCount + 1, minWinCount];
       }
@@ -11,9 +12,9 @@ function solution(lottos, win_nums) {
         return [maxWinCount + 1,minWinCount + 1];  
       } 
       return [maxWinCount, minWinCount];
-  }, [0,0]);
+  }, [0,0])
+    .map((winCount) => getRank(lowestRank,winCount));
     
-  return [getRank(lowestRank,maxWinCount),getRank(lowestRank,minWinCount)];
 }
 
 function getRank(lowestRank,winCount) {
