@@ -1,19 +1,15 @@
 function solution(sizes) {
   return sizes
-    .map(([w, h]) => (w > h ? [w, h] : [h, w]))
-    .sort((a, b) => b[0] - a[0])
-    .reduce((acc, [_, h], idx, arr) => {
-      const maxWidth = arr[0][0]
-      const maxResult = maxWidth * h
-      if (maxResult > acc) acc = maxResult
-      return acc
-    }, 0)
+    .map((size) => size.sort((a, b) => b - a))
+    .reduce(
+      (acc, [largeNum, smallNum]) => {
+        acc[0] = largeNum > acc[0] ? largeNum : acc[0]
+        acc[1] = smallNum > acc[1] ? smallNum : acc[1]
+        return acc
+      },
+      [0, 0]
+    )
+    .reduce((acc, num) => {
+      return (acc *= num)
+    }, 1)
 }
-// const sizes = [
-//   [10, 7],
-//   [12, 3],
-//   [8, 15],
-//   [14, 7],
-//   [5, 15],
-// ]
-// console.log(solution(sizes))
