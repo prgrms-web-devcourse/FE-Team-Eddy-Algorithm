@@ -1,8 +1,6 @@
 function solution(lottos, win_nums) {
-  var answer = [];
 
   const LOTTO_LEN = 6;
-
   const nonZeroLottos = lottos.filter((num) => num !== 0); // 0이 아닌 숫자
   const numOfZero = LOTTO_LEN - nonZeroLottos.length; // 0의 개수
 
@@ -21,6 +19,5 @@ function solution(lottos, win_nums) {
   const maxRank = calRank(matchNum + numOfZero);
   // 0이 모두 불일치할 때 최저 순위
   const minRank = calRank(matchNum);
-  answer.push(maxRank, minRank);
-  return answer;
+  return [maxRank, minRank];
 }
