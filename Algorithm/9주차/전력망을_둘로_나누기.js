@@ -82,3 +82,4 @@ function solution(n, wires) {
 
   return minDiff;
 }
+
