@@ -1,4 +1,5 @@
 function solution(n, wires) {
+  // making HashMap of towersConnection...
   const towersConnection = wires.reduce((towersConnection, [v1, v2]) => {
     towersConnection[v1] 
       ? towersConnection[v1][v2] = true 
@@ -6,14 +7,16 @@ function solution(n, wires) {
     towersConnection[v2] 
       ? towersConnection[v2][v1] = true 
       : towersConnection[v2] = { [v1] : true };
-    return towersConnection;
+    return towersConnection; 
+    // towerConnection = { 1 : { 3: true}, 2: {3 : true}, 3: { 1 : true , 2 : true }, ...};
   }, {});
 
   let leastDifference = Infinity;
   
   wires.forEach(([v1, v2]) => {
-    const visited = { [v1] : true, [v2] : true };
+    const visited = { [v1] : true, [v2] : true }; // v1 : Initial Visite , v2 : Remove Wire
     const networkLength = getNetworkLength ([v1], towersConnection, visited);
+
      // Network A : networkLength , Network B : n - networkLength
     leastDifference = Math.min(leastDifference, Math.abs(n - 2 * networkLength)); 
   });
