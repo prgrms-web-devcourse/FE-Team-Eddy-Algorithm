@@ -32,8 +32,8 @@ function solution(n, wires) {
       Object
         .keys(towersConnection[currTower])
         .forEach(nextTower => {
-          // is It in Connection and not Visited
-          if (towersConnection[currTower][nextTower] && !(nextTower in visited)) {
+          // is It not Visited
+          if (!(nextTower in visited)) {
             stack.push(nextTower);
             visited[nextTower] = true;
           }
