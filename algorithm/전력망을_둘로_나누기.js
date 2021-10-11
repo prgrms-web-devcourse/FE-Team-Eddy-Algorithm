@@ -15,7 +15,7 @@ function solution(n, wires) {
   
   wires.forEach(([v1, v2]) => {
     const visited = { [v1] : true, [v2] : true }; // v1 : Initial Visite , v2 : Remove Wire
-    const networkLength = getNetworkLength ([v1], towersConnection, visited);
+    const networkLength = _getNetworkLengthDFS ([v1], towersConnection, visited);
 
      // Network A : networkLength , Network B : n - networkLength
     leastDifference = Math.min(leastDifference, Math.abs(n - 2 * networkLength)); 
@@ -24,7 +24,7 @@ function solution(n, wires) {
   
     
     
-  function getNetworkLength (stack, towersConnection, visited) {
+  function _getNetworkLengthDFS (stack, towersConnection, visited) {
     let networkLength = 0;
     while (stack.length > 0) {
       const currTower = stack.pop();
@@ -32,6 +32,7 @@ function solution(n, wires) {
       Object
         .keys(towersConnection[currTower])
         .forEach(nextTower => {
+          // is It in Connection and not Visited
           if (towersConnection[currTower][nextTower] && !(nextTower in visited)) {
             stack.push(nextTower);
             visited[nextTower] = true;
