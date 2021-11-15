@@ -1,40 +1,27 @@
-const IsDistancing = (twoDemesionArr, i, j, k) => {
-  if (twoDemesionArr[i][j][k] === "P") {
-    if (
-      twoDemesionArr[i][j][k + 1] === "P" ||
-      twoDemesionArr[i][j + 1][k] === "P"
-    )
+const IsDistancing = (places7x7, i, j, k) => {
+  if (places7x7[i][j][k] === "P") {
+    if (places7x7[i][j][k + 1] === "P" || places7x7[i][j + 1][k] === "P")
       return false;
-    if (twoDemesionArr[i][j + 1][k + 1] === "P") {
-      if (
-        twoDemesionArr[i][j + 1][k] === "O" ||
-        twoDemesionArr[i][j][k + 1] === "O"
-      )
+
+    if (places7x7[i][j + 1][k + 1] === "P") {
+      if (places7x7[i][j + 1][k] === "O" || places7x7[i][j][k + 1] === "O")
         return false;
     }
 
+    if (places7x7[i][j + 2][k] === "P" && places7x7[i][j + 1][k] === "O")
+      return false;
+
+    if (places7x7[i][j][k + 2] === "P" && places7x7[i][j][k + 1] === "O")
+      return false;
+  } else if (places7x7[i][j][k] === "X") {
     if (
-      twoDemesionArr[i][j + 2][k] === "P" &&
-      twoDemesionArr[i][j + 1][k] === "O"
+      places7x7[i][j][k + 1] === "P" &&
+      places7x7[i][j + 1][k] === "P" &&
+      places7x7[i][j + 1][k + 1] === "O"
     )
       return false;
-    if (
-      twoDemesionArr[i][j][k + 2] === "P" &&
-      twoDemesionArr[i][j][k + 1] === "O"
-    )
-      return false;
-  } else if (twoDemesionArr[i][j][k] === "X") {
-    if (
-      twoDemesionArr[i][j][k + 1] === "P" &&
-      twoDemesionArr[i][j + 1][k] === "P" &&
-      twoDemesionArr[i][j + 1][k + 1] === "O"
-    )
-      return false;
-  } else if (twoDemesionArr[i][j][k] === "O") {
-    if (
-      twoDemesionArr[i][j][k + 1] === "P" &&
-      twoDemesionArr[i][j + 1][k] === "P"
-    )
+  } else if (places7x7[i][j][k] === "O") {
+    if (places7x7[i][j][k + 1] === "P" && places7x7[i][j + 1][k] === "P")
       return false;
   }
 
@@ -42,11 +29,12 @@ const IsDistancing = (twoDemesionArr, i, j, k) => {
 };
 
 function solution(places) {
+  let rowArr = [];
   let answer = [];
-  let realAnswer = [];
   let isProblem = false;
-  let Arr = [...places];
-  Arr = Arr.map((arr) => {
+  let places7x7 = [...places];
+
+  places7x7 = places7x7.map((arr) => {
     arr = arr.map((val) => {
       val = val.concat("X");
       val = val.concat("X");
@@ -57,17 +45,31 @@ function solution(places) {
     return arr;
   });
 
-  places.forEach((arr, i) => {
+  // 각각의 arr 실행
+  places.forEach((waitRoomArr, i) => {
     isProblem = false;
-    arr.forEach((rows, j) => {
-      answer = [];
-      rows.split("").forEach((row, k) => {
-        answer.push(IsDistancing(Arr, i, j, k));
+    // 5*5 행렬 waitRoomArr 실행
+    waitRoomArr.forEach((rows, j) => {
+      rowArr = [];
+      // 1~5행을 각각 실행  (크게만든 6,7행은 순회해도 의미가 없으니 순회하지않는다.)
+      isProblem = rows.split("").some((_, k) => {
+        rowArr.push(IsDistancing(places7x7, i, j, k));
+        return rowArr.indexOf(false) > -1;
       });
-      if (answer.indexOf(false) > -1) isProblem = true;
     });
-    if (isProblem) realAnswer.push(0);
-    else realAnswer.push(1);
+
+    if (isProblem) answer.push(0);
+    else answer.push(1);
   });
-  return realAnswer;
+  return answer;
 }
+
+console.log(
+  solution([
+    ["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"],
+    ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"],
+    ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"],
+    ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"],
+    ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"],
+  ])
+);
