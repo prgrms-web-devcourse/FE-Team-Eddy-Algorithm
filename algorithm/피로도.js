@@ -13,7 +13,7 @@ function solution(k, dungeons) {
       }
 
       visited[idx] = true;
-      stack.push([currValue - decreaseValue, { ...visited }]);
+      stack.push([currValue - decreaseValue, visited]);
     });
   }
   return maxCount;
