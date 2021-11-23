@@ -1,3 +1,5 @@
+//15주차 순위검색
+
 function solution(info, query) {
   var answer = [];
   query.forEach((str) => {
