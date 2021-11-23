@@ -1,4 +1,4 @@
-//15주차 순위검색
+//15주차 순위검색...
 
 function solution(info, query) {
   var answer = [];
