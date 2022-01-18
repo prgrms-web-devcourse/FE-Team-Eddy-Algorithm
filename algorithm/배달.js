@@ -21,7 +21,7 @@ function solution(N, road, K) {
       current = [nextTown, distance[nextTown]];
     } else break;
   }
-  return distance.filter((distance) => distance <= K).length + 1;
+  return distance.filter((distance) => distance <= K).length + 1; // 자기자신을 더한다.
 }
 
 function makeTree(arrays, N) {
