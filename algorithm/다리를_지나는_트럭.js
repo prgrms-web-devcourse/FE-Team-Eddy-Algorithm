@@ -18,6 +18,10 @@ function solution(bridge_length, weight, truck_weights) {
       totalWeight += truck_weights[truck_weights.length - 1];
       bridge.push([truck_weights.pop(), time]);
     }
+    // time slip
+    else if (bridge.length > 0) {
+      time = bridge[0][1] + bridge_length - 1;
+    }
   }
   return time;
 }
