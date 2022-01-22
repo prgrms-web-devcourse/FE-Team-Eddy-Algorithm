@@ -1,9 +1,3 @@
-/*
-채점 결과
-정확성: 27.1
-효율성: 22.6
-합계: 49.6 / 100.0
-*/
 function solution(maps) {
   let site = [0, 0];
   const visited = [0];
@@ -14,31 +8,31 @@ function solution(maps) {
     const [row, column] = queue.shift();
     if (
       maps[row][column + 1] === 1 &&
-      !visited[row * maps.length + column + 1]
+      !visited[row * maps[0].length + column + 1]
     ) {
-      visited[row * maps.length + column + 1] =
-        visited[row * maps.length + column] + 1;
+      visited[row * maps[0].length + column + 1] =
+        visited[row * maps[0].length + column] + 1;
       queue.push([row, column + 1]);
     }
     if (
       maps[row][column - 1] === 1 &&
-      !visited[row * maps.length + column - 1]
+      !visited[row * maps[0].length + column - 1]
     ) {
-      visited[row * maps.length + column - 1] =
-        visited[row * maps.length + column] + 1;
+      visited[row * maps[0].length + column - 1] =
+        visited[row * maps[0].length + column] + 1;
       queue.push([row, column - 1]);
     }
     if (maps[row - 1] !== undefined && maps[row - 1][column] === 1) {
-      if (!visited[(row - 1) * maps.length + column]) {
-        visited[(row - 1) * maps.length + column] =
-          visited[row * maps.length + column] + 1;
+      if (!visited[(row - 1) * maps[0].length + column]) {
+        visited[(row - 1) * maps[0].length + column] =
+          visited[row * maps[0].length + column] + 1;
         queue.push([row - 1, column]);
       }
     }
     if (maps[row + 1] !== undefined && maps[row + 1][column] === 1) {
-      if (!visited[(row + 1) * maps.length + column]) {
-        visited[(row + 1) * maps.length + column] =
-          visited[row * maps.length + column] + 1;
+      if (!visited[(row + 1) * maps[0].length + column]) {
+        visited[(row + 1) * maps[0].length + column] =
+          visited[row * maps[0].length + column] + 1;
         queue.push([row + 1, column]);
       }
     }
