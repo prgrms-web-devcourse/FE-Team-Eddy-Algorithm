@@ -1,14 +1,16 @@
 function solution(n, left, right) {
-  const arr = Array.from({ length: n * n }, (_, index) => (index % n) + 1);
+  const length = right - left + 1;
+  const answer = Array.from({ length }, (_, index) => ((index + left) % n) + 1);
 
-  const arrLength = arr.length;
-
-  for (let i = n; i < arrLength; i++) {
-    const number = Math.floor(i / n) + 1;
-    if (i % n < number) {
-      arr[i] = number;
+  for (let i = 0; i < length; i++) {
+    const currentIndex = i + left;
+    const number = Math.floor(currentIndex / n) + 1;
+    const isSequentialNumber = currentIndex % n >= number;
+    if (isSequentialNumber) {
+      continue;
     }
+    answer[i] = number;
   }
 
-  return arr.slice(left, right + 1);
+  return answer;
 }
