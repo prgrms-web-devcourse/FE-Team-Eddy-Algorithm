@@ -57,9 +57,12 @@ function solution(fees, records) {
     const accumulatedTime = accumulatedMinute + accumulatedHour * 60;
     const extraFee =
       accumulatedTime > defaultTime
-        ? Math.floor((accumulatedTime - defaultTime) / unitTime) * unitFee
+        ? Math.ceil((accumulatedTime - defaultTime) / unitTime) * unitFee
         : 0;
     parkingCost.push(defaultFee + extraFee);
+
+    accumulatedHour = 0;
+    accumulatedMinute = 0;
   }
 
   return parkingCost;
