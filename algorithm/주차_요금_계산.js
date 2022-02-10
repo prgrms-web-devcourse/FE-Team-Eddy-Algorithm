@@ -9,6 +9,7 @@ function solution(fees, records) {
   const timeSpentMap = {};
   const historyMap = {};
 
+  // 입고, 출차 시간 계산
   for (const record of records) {
     const [time, carNumber, history] = record;
     const timeFormatted = _formatTimeToMinute(time);
@@ -17,18 +18,20 @@ function solution(fees, records) {
       continue;
     }
     const timeSpent = timeFormatted - historyMap[carNumber];
-    timeSpentMap[carNumber] = timeSpentMap[carNumber]
-      ? timeSpentMap[carNumber] + timeSpent
-      : timeSpent;
+    timeSpentMap[carNumber] = _hashMapCounter(
+      timeSpentMap[carNumber],
+      timeSpent
+    );
     delete historyMap[carNumber];
   }
 
   // 남은 주차 기록
   Object.entries(historyMap).forEach(([carNumber, timeHistory]) => {
     const timeSpent = 24 * 60 - 1 - timeHistory;
-    timeSpentMap[carNumber] = timeSpentMap[carNumber]
-      ? timeSpentMap[carNumber] + timeSpent
-      : timeSpent;
+    timeSpentMap[carNumber] = _hashMapCounter(
+      timeSpentMap[carNumber],
+      timeSpent
+    );
   });
 
   // 요금 청구
@@ -45,5 +48,9 @@ function solution(fees, records) {
       .split(":")
       .map(Number)
       .reduce((hour, minute) => hour * 60 + minute);
+  }
+
+  function _hashMapCounter(hashMapValue, increaseValue) {
+    return hashMapValue ? hashMapValue + increaseValue : increaseValue;
   }
 }
