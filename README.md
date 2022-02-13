@@ -5,8 +5,6 @@
 <h2 align="middle">에디팀 알고리즘 스터디</h2>
 <p align="middle">Team Eddy Algorithm Study</p>
 <p align="middle">
-  <img src="https://img.shields.io/badge/version-1.0.0-blue?style=flat-square" alt="template version"/>
-  <img src="https://img.shields.io/badge/language-md-md.svg?style=flat-square"/>
 </p>
 
 <p align="middle">
@@ -14,34 +12,42 @@
 
 <br/>
 
-# 💻 에디팀 알고리즘 스터디
+## 역사
 
-> "Talk is cheap. Show me the code."
-> ("말은 쉽지, 코드를 보여줘.")
->
-> 리누스 토르발스(Linus Torvalds)
+### 시즌 1
 
-<br/>
+기간 : 2021/09/06 ~ 2021/11/23
 
-# 필수
+진행과정 : [노션 페이지 링크](https://www.notion.so/1-aa71b517050a4ee08ececfdac087e9cf)
+
+### 시즌 2
+
+기간 : 2022/01/12 ~ 진행중
+
+진행과정 : [노션 페이지 링크](https://www.notion.so/2-49791191f6c045d5bfc43f806a608d73)
 
 ## 📆 기간
 
-매주 월요일 스크럼 이후 30분 ~ 50분
+매주 수요일 10:00 PM
+
+## 🏃 목적
+
+꾸준히 많은 코딩 테스트 문제 풀이
 
 ## 📌 진행방식
 
-- 각자 다른 1명의 코드를 30분동안 스터디 당일에 코드리뷰 (30분보다 줄일지 늘릴지 1회차이후 조정)
-- 시작 전에 근황이나 문제 어려웠던 점, 코드리뷰 후에 알게된 것 토론
-- 언어 : 자바스크립트
-- 문제 : [프로그래머스 위클리 챌린지](https://programmers.co.kr/learn/challenges?tab=weekly_challenges)
-- 문제수 : 주 1개 (3회차까지 인원의 80%가 완료하면 개수 늘리기)
+- 매주 3개의 문제를 풀어서 [풀이저장소](https://github.com/prgrms-web-devcourse/FE-Team-Eddy-Algorithm)에 코드와 로직설명을 PR로 올립니다. (필수)
+- 스터디 전에 다른 팀원의 코드를 리뷰할 수 있습니다. (선택)
+- github PR에 풀이과정이나 질문을 올립니다. (필수)
+- 스터디 전에 미리 질문에 답변을 달 수 있습니다. (선택)
+- 스터디 시간에 질문하고 이에 대하여 답변합니다. (필수)
+- 문제 : [프로그래머스](https://programmers.co.kr/learn/challenges)
 
 ## ✏️ 제출방식
 
 fe private 과제 제출 방식과 동일
 
-- base : `username` ← compare : `username_working`
+- base : `username` ← compare : `username_문제이름`
 - `[이름][N주차] 문제이름` 형식으로 Pull Request (예시 : `[김홍중][4주차] 직업군 추천하기`)
 
 ## 🕝 제출기한
@@ -51,15 +57,3 @@ fe private 과제 제출 방식과 동일
 ## 📢 규칙
 
 - 불가피하게 출석하지 못하는 경우 하루 전 11:59pm 까지 팀장에게 연락
-
-# 선택
-
-## 📌 진행방식
-
-- [프로그래머스 월간 코드 챌린지 시즌3](https://programmers.co.kr/competitions/1581?slug=monthly-code-challenge-s3) 에 참여
-- 끝나고 30분동안 풀이법 토론 및 회고
-
-## 📆 월간 코드챌린지 기간
-
-- 09/09(목) 19:30 - 22:30
-- 10/07(목) 19:30 - 22:30
