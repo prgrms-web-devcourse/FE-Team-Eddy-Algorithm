@@ -9,7 +9,7 @@ function permutation(arr, selectNum) {
     const combineFixer = permuationArr.map((v) => [fixer, ...v]);
     result.push(...combineFixer);
   });
-  return result.map((val) => val.join(",").replace(/,/g, ""));
+  return result.map((val) => val.join(""));
 }
 
 function solution(word) {
